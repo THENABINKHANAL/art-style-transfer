@@ -73,9 +73,9 @@
     min-width: 70px;
     min-height: 120px;
     overflow: hidden;
-    width:200px;
-    height:320px;
-    max-width:200px;
+    width:300px;
+    height:420px;
+    max-width:300px;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 40px solid transparent;

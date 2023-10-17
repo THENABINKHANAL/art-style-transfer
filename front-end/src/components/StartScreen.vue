@@ -81,6 +81,9 @@ export default {
         let fr = new FileReader();
         fr.onload = () => {
           this.imagesData[0] = {dataSource:fr.result};
+          this.imagesData[1] = null;
+          this.imagesData[2] = null;
+          this.imagesData[3] = null;
           this.uploadImageandGetGeneratedImages();
         };
         fr.readAsDataURL(e.target.files[0]);
@@ -147,7 +150,7 @@ export default {
 
 .startScreenContainer {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 

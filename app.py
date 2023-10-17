@@ -5,13 +5,16 @@ from model import getResult
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
+@app.route('/', methods=['OPTIONS'])
+def options_submit():
+    return '', 200
 
 @app.route('/upload', methods=['POST', 'OPTIONS'])
 def submit_data():
     if request.method == 'OPTIONS':
         return '', 200
     # Get JSON data from the request body
-    img_str = request.json.imageData.image.dataSource
+    img_str = request.json["image"]["dataSource"]
     result = getResult(img_str)
 
 

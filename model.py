@@ -115,7 +115,7 @@ def getResult(img_str):
     #device="cpu"
     # Models
     G_Y2X = Generator(3, 3).to(device)
-    checkpointpaths = ['./Cubism_Final.pth']
+    checkpointpaths = ['./Cubism_Final.pth', './Pointillism_Final.pth', './Realism_Final.pth']
 
     outputImages = []
     if img_str.startswith('data:image'):
@@ -129,7 +129,8 @@ def getResult(img_str):
     img_buf = io.BytesIO(img_bytes)
 
     # Byte stream to PIL Image
-    image = Image.open(img_buf)
+    image = Image.open(img_buf).convert('RGB')
+
     transform = transforms.Compose([
         transforms.Resize((256, 256)),
         transforms.ToTensor(),
@@ -138,9 +139,10 @@ def getResult(img_str):
 
     image_tensor = transform(image).unsqueeze(0).to(device)
 
-    for checkpointpath in range(checkpointpaths):
-        checkpoint = torch.load(checkpointpath)
+    for checkpointpath in checkpointpaths:
+        checkpoint = torch.load(checkpointpath, map_location=device)
         G_Y2X.load_state_dict(checkpoint['G_Y2X'])
+        G_Y2X.eval()
 
         with torch.no_grad():
             fake_image_tensor = G_Y2X(image_tensor)
