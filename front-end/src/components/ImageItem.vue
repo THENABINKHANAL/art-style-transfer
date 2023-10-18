@@ -17,7 +17,7 @@
     })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 @keyframes placeholderShimmer {
   0% {
     background-position: -468px 0;

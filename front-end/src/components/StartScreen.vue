@@ -132,7 +132,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .headerText {
   font-family: Georgia, serif;
   font-size: 4em;
