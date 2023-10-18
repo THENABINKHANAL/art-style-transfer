@@ -148,6 +148,7 @@ def getResult(img_str):
             fake_image_tensor = G_Y2X(image_tensor)
         
         fake_image = transforms.ToPILImage()(fake_image_tensor.squeeze().cpu() * 0.5 + 0.5)
+        fake_image = fake_image.resize((512, 512))
 
         buffered = BytesIO()
         fake_image.save(buffered, format="JPEG")
