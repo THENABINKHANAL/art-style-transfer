@@ -117,6 +117,8 @@ export default {
       this.$viewer = viewer;
     },
     show(index) {
+      if(this.imagesData[index]==null)
+        return
       //this.options.initialViewIndex = index+1;
         const $viewer = viewerApi({
           options: {

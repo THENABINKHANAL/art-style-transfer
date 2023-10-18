@@ -1,5 +1,5 @@
 <template>
-  <div class="imgContainer">
+  <div :class="props.imageSrc?'imgContainer hasImage':'imgContainer'">
     <div class="actualImageContianer">
         <img v-if="props.imageSrc" :src="props.imageSrc" class="currentImage"/>
         <div v-else class="imgLoadingScreen"></div>
@@ -67,7 +67,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .imgContainer{
@@ -84,6 +83,10 @@
     display: flex;
     flex-direction: column;
 }
+
+.imgContainer.hasImage{
+      cursor: pointer;
+    }
 
 .imageText{
     padding-top: 10px;
